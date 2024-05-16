@@ -26,7 +26,12 @@ body {
   height: 100vh;
   background: var(--white-color);
 }
-
+* {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
 /*? start resuable css  */
 
 .sidebar .text {
@@ -243,6 +248,14 @@ body {
   width: calc(100% - 90px);
   margin-left: 90px;
 }
+.sidebar.close ~ .main .edit.show {
+  width: calc(100% - 90px) !important;
+  margin-left: 90px !important;
+}
+.sidebar.close ~ .main .add.show {
+  margin-left: 90px !important;
+  width: calc(100% - 90px) !important;
+}
 
 .head {
   height: 80px;
@@ -298,28 +311,144 @@ body {
   font-size: 20px;
   animation: bell 1s 1s both infinite;
 }
-/* .sidebar.close + .main .head li img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-} */
-.main-cards {
-  position: fixed;
+
+
+
+.parks {
+  background: var(--cultured-2);
+  padding-block: var(--section-padding);
 }
-.main-cards .container {
-  padding: 10px 20px;
+.grid-boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  .box {
+    position: relative;
+    background: var(--white);
+    padding: 40px 30px;
+    box-shadow: var(--shadow-2);
+    border-radius: 6px;
+
+    img {
+      width: 100%;
+    }
+
+    h3 {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+    }
+    p.location {
+      display: flex;
+      align-items: center;
+      span.city {
+        font-size: 14px;
+        font-weight: 700;
+        margin-right: 5px;
+        color: var(--main-color);
+        padding: 5px 10px;
+        background: hsla(9, 100%, 62%, 0.1);
+        width: max-content;
+        border-radius: 50px;
+      }
+  
+    }
+    p.cridPrice {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      .btn {
+        padding: 5px 10px;
+      }
+    }
+    .rating {
+
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
 }
-.main-cards .container .box {
-  padding: 10px 20px;
+
+.edit,.add {
+  display: none;
 }
-.main-cards .container .box .head {
-  display: flex;
+.edit.show,
+.add.show {
   align-items: center;
-  justify-content: space-between;
-  background: var(--white-color);
-  padding: 10px 20px;
+justify-content: center;
+background: rgba(255, 255, 255, .9);
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1000;
+height: 100%;
+width: 85%;
+display: flex;
+background: white;
+margin-left: 250px;
+
+
+form {
+  background: #fff;
+    border: var(--border);
+    width: 40rem;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    margin: 2rem;
+
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+}
+}
+  #close-btn,
+  #close-btn-add {
+  position: absolute;
+top: 1.5rem;
+right: 2.5rem;
+font-size: 5rem;
+color: var(--black);
+cursor: pointer;
+}
+
+.add-park {
+  padding: 80px 0;
+
+  h3 {
+    text-align: center;
+    margin: 0 0 60px 0;
+    font-size: 30px;
+  }
+}
+.add-park .btn {
+  width: fit-content;
+margin: 0 auto;
+}
+.deletall {
+  background-color: white;
+  text-align: center;
+  padding: 80px 0;
+
+  h3 {
+    text-align: center;
+    margin: 0 0 60px 0;
+    font-size: 30px;
+  }
+  .btn {
+    width: fit-content;
+    margin: 0 auto;
+  }
 }
 /* end section main  */
 
@@ -339,6 +468,36 @@ body {
   }
 }
 
+@media(min-width:768px) {
+  .edit.show,
+  .add.show {
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100vh;
+    width: 73%;
+    margin-left: 250px;
+}
+}
+@media(min-width:1200px) {
+  .edit.show,
+  .add.show {
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100vh;
+    width: 87%;
+    margin-left: 250px;
+}
+}
 @keyframes bell {
   0% {
     transform: rotate(0);

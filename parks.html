@@ -41,112 +41,7 @@
   <link rel="stylesheet" href="css/main.css">
 
   <style>
-    .parks {
-      background: var(--cultured-2);
-      padding-block: var(--section-padding);
-    }
-    .grid-boxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      .box {
-        position: relative;
-        background: var(--white);
-        padding: 40px 30px;
-        box-shadow: var(--shadow-2);
-        border-radius: 6px;
 
-        img {
-          width: 100%;
-        }
-
-        h3 {
-          font-size: 26px;
-          font-weight: 700;
-          text-align: center;
-        }
-        p.location {
-          display: flex;
-          align-items: center;
-          span.city {
-            font-size: 14px;
-            font-weight: 700;
-            margin-right: 5px;
-            color: var(--main-color);
-            padding: 5px 10px;
-            background: hsla(9, 100%, 62%, 0.1);
-            width: max-content;
-            border-radius: 50px;
-          }
-        }
-        p.cridPrice {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-        .btns {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin-top: 20px;
-          .btn {
-            padding: 5px 10px;
-          }
-        }
-      }
-    }
-
-    .edit,.add {
-      display: none;
-    }
-    .edit.show,
-    .add.show {
-      align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, .9);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    height: 100%;
-    width: 85%;
-    display: flex;
-    background: white;
-    margin-left: 250px;
-
-  
-    form {
-      background: #fff;
-        border: var(--border);
-        width: 40rem;
-        padding: 2rem;
-        box-shadow: var(--box-shadow);
-        border-radius: .5rem;
-        margin: 2rem;
-
-        display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    }
-    }
-      #close-btn,
-      #close-btn-add {
-      position: absolute;
-    top: 1.5rem;
-    right: 2.5rem;
-    font-size: 5rem;
-    color: var(--black);
-    cursor: pointer;
-    }
-
-    .add-park .btn {
-      width: fit-content;
-    margin: 0 auto;
-    }
   </style>
   </head>
   <body>
@@ -254,49 +149,57 @@
       </ul>
     </section>
     <section class="main">
-      <br />
+      
       <section class="parks">
         <div class="container">
           <div class="grid-boxes">
           </div>
         </div>
       </section>
-      <br />
+      
       <section class="add-park">
         <div class="container">
-
+          <h3>add park</h3>
           <a href="#" class="btn" onclick="addPark()">add park</a>
         </div>
       </section>
+      <section class="deletall">
+        <div class="container">
+          <h3>delete all parks</h3>
+
+        <a href="#" class="btn" onclick="deleteAllParks()">delet parks</a>
+        </div>
+      </section>
+
 
       <section class="add">
         <div class="fas fa-times" id="close-btn-add"></div>
         <form id="addParkingForm">
-          <label for="parking_name">Park Name:</label><br />
-          <input type="text" id="parking_name" name="parking_name" /><br />
-          <label for="city">City:</label><br />
-          <input type="text" id="city" name="city" /><br />
-          <label for="state">State:</label><br />
-          <input type="text" id="state" name="state" /><br />
-          <label for="address">Address:</label><br />
-          <input type="text" id="address" name="address" /><br />
-          <label for="totalPlace">Total Places</label><br />
-          <input type="number" id="totalPlace" name="totalPlace" /><br />
-          <label for="creditPointPerHour">credit Point Per Hour</label><br />
+          <label for="parking_name">Park Name:</label>
+          <input type="text" id="parking_name" name="parking_name" />
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" />
+          <label for="state">State:</label>
+          <input type="text" id="state" name="state" />
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" />
+          <label for="totalPlace">Total Places</label>
+          <input type="number" id="totalPlace" name="totalPlace" />
+          <label for="creditPointPerHour">credit Point Per Hour</label>
           <input
             type="number"
             id="creditPointPerHour"
             name="creditPointPerHour"
-          /><br />
-          <label for="locationMap">خريطة الموقع:</label><br />
-          <input type="text" id="locationMap" name="locationMap" /><br />
+          />
+          <label for="locationMap">خريطة الموقع:</label>
+          <input type="text" id="locationMap" name="locationMap" />
           <label for="creditPointPerMonth">نقاط الائتمان في الشهر:</label
-          ><br />
+          >
           <input
             type="number"
             id="creditPointPerMonth"
             name="creditPointPerMonth"
-          /><br />
+          />
           <input type="submit" value="إضافة جراج" />
         </form>
       </section>
@@ -304,30 +207,30 @@
       <section class="edit">
         <div class="fas fa-times" id="close-btn"></div>
         <form id="editParkingForm">
-          <label for="parking_nameEdit">Park Name:</label><br />
-          <input type="text" id="parking_nameEdit" name="parking_name" /><br />
-          <label for="cityEdit">City:</label><br />
-          <input type="text" id="cityEdit" name="city" /><br />
-          <label for="stateEdit">State:</label><br />
-          <input type="text" id="stateEdit" name="state" /><br />
-          <label for="addressEdit">Address:</label><br />
-          <input type="text" id="addressEdit" name="address" /><br />
-          <label for="totalPlaceEdit">Total Places</label><br />
-          <input type="number" id="totalPlaceEdit" name="totalPlace" /><br />
-          <label for="creditPointPerHourEdit">credit Point Per Hour</label><br />
+          <label for="parking_nameEdit">Park Name:</label>
+          <input type="text" id="parking_nameEdit" name="parking_name" />
+          <label for="cityEdit">City:</label>
+          <input type="text" id="cityEdit" name="city" />
+          <label for="stateEdit">State:</label>
+          <input type="text" id="stateEdit" name="state" />
+          <label for="addressEdit">Address:</label>
+          <input type="text" id="addressEdit" name="address" />
+          <label for="totalPlaceEdit">Total Places</label>
+          <input type="number" id="totalPlaceEdit" name="totalPlace" />
+          <label for="creditPointPerHourEdit">credit Point Per Hour</label>
           <input
             type="number"
             id="creditPointPerHourEdit"
             name="creditPointPerHour"
-          /><br />
-          <label for="locationMapEdit">خريطة الموقع:</label><br />
-          <input type="text" id="locationMapEdit" name="locationMap" /><br />
-          <label for="creditPointPerMonthEdit">نقاط الائتمان في الشهر:</label><br />
+          />
+          <label for="locationMapEdit">خريطة الموقع:</label>
+          <input type="text" id="locationMapEdit" name="locationMap" />
+          <label for="creditPointPerMonthEdit">نقاط الائتمان في الشهر:</label>
           <input
             type="number"
             id="creditPointPerMonthEdit"
             name="creditPointPerMonth"
-          /><br />
+          />
           <input type="submit" value="تعديل" />
         </form>
       </section>
@@ -619,7 +522,67 @@ element.classList.add('show');
 
 
 
-    ParkingData();
+  ParkingData();
+
+
+
+
+
+
+
+
+
+  function deleteAllParks() {
+  swal({
+    title: "هل أنت متأكد؟",
+    text: "هل تريد حذف جميع الجراجات؟",
+    icon: "warning",
+    buttons: ["لا", "نعم"],
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      fetch(`https://gara4ko-p8wm.onrender.com/api/v1/parking`, {
+        method: "GET",
+        headers: {
+          token: token,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+  console.log(data); // طباعة البيانات
+  if (Array.isArray(data.data)) { // تحقق من أن data.data هو مصفوفة
+    data.data.forEach((park) => { // استخدم data.data.forEach بدلاً من data.forEach
+      fetch(`https://gara4ko-p8wm.onrender.com/api/v1/parking/${park._id}`, {
+        method: "DELETE",
+        headers: {
+          token: token,
+        },
+      });
+    });
+    swal("تم!", "تم حذف جميع الجراجات بنجاح", "success");
+    // location.reload();
+  } else {
+    console.error("Error: data.data is not an array");
+    swal("خطأ!", "حدث خطأ أثناء حذف الجراجات", "error");
+  }
+})
+
+
+    } else {
+      swal("تم إلغاء الحذف");
+    }
+  });
+}
+
+
+
+
+
     
   </script>
   <script src="assets/js/script.js"></script>
