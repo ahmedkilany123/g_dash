@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Alexandria", sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+:root {
+  --main-color: #0b2c3c;
+  --hover-color: #008dda;
+  --green-hover: #008dda;
+  --pink-color: #bb6ce6;
+  --yello-hover: #ffc801;
+  --yello-color: #d8ab09;
+  --white-color: #eff0f2;
+  --red-color: #e3442f;
+}
+
+body {
+  height: 100vh;
+  background: var(--white-color);
+}
+
+/*? start resuable css  */
+
+.sidebar .text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white-color);
+}
+.sidebar .image {
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+}
+.sidebar li:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  position: relative;
+  margin-top: 10px;
+}
+.sidebar li:nth-child(1) .search {
+  position: absolute;
+  left: 45px;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  max-width: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar li:nth-child(1) input:focus::placeholder {
+  color: var(--white-color);
+  transition: 0.3s;
+}
+.sidebar li:nth-child(1) input:focus {
+  width: 100%;
+  transition: 0.3s;
+}
+.sidebar li:nth-child(1) input:focus ~ a .search {
+  left: 0px;
+  border-radius: 50%;
+  transition: 0.3s;
+  color: var(--green-color);
+}
+.sidebar li:nth-child(1) input {
+  height: 100%;
+  width: 60%;
+  border-radius: 6px;
+  padding: 0 25px;
+}
+.sidebar li a {
+  height: 50px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+}
+.sidebar li a:hover {
+  background: var(--hover-color);
+}
+.sidebar li .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  font-size: 20px;
+}
+.sidebar li .icon,
+.sidebar li .text {
+  color: var(--white-color);
+}
+/* end resuable css  */
+
+/*? start sidebar  */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 14px;
+  height: 100%;
+  width: 250px;
+  background: var(--main-color);
+  border-right: 3px solid var(--green-hover);
+  z-index: 1000;
+}
+
+.sidebar .image-text img {
+  width: 200px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--white-color);
+}
+.sidebar header {
+  position: relative;
+}
+.sidebar header .image-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.sidebar header .header-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.sidebar header .header-text .name {
+  font-weight: 700;
+  font-size: 26px;
+}
+.sidebar header .toggle {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%);
+  height: 25px;
+  width: 25px;
+  background: var(--pink-color);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 22px;
+  transform: rotate(-180deg);
+  border: 2px solid var(--white-color);
+}
+.sidebar header .toggle:hover {
+  right: -30px;
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+.sidebar li:nth-child(12) a:hover {
+  background-color: var(--red-color);
+}
+.sidebar ul li:nth-child(12) a {
+  transform: translateY(70px);
+}
+.sidebar li:nth-child(12) a:hover i {
+  margin-left: 10px;
+}
+
+.sidebar.close .text {
+  font-size: 16px;
+  color: transparent;
+}
+.sidebar.close {
+  width: 90px;
+}
+
+.sidebar .text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white-color);
+}
+.sidebar .name {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.sidebar .profession {
+  font-size: 12px;
+  text-align: center;
+}
+.sidebar .header-text span {
+  color: var(--white-color);
+}
+.sidebar.close {
+  transition: 0.5s;
+}
+.sidebar.close .image {
+  width: 80px;
+}
+.sidebar.close .image img {
+  width: 80px;
+  height: 60px;
+}
+.sidebar.close li:nth-child(1) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar.close li:nth-child(1) a .search {
+  left: 15px;
+  color: var(--white-color);
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.sidebar.close li:nth-child(1) a .search:hover {
+  background: var(--pink-color);
+}
+.sidebar.close li:nth-child(1) input {
+  display: none;
+}
+.sidebar.close header .header-text .name {
+  font-size: 16px;
+}
+/* end sidebar  */
+
+/* ?start section main  */
+
+.main {
+  height: 100vh;
+  margin-left: 250px;
+}
+.sidebar ~ .main {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+}
+.sidebar.close ~ .main {
+  width: calc(100% - 90px);
+  margin-left: 90px;
+}
+
+.head {
+  height: 80px;
+  width: 88%;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 100;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  right: -44%;
+  top: 3%;
+  background: var(--main-color);
+}
+.head ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 10px 20px;
+  height: 100%;
+}
+.head ul li i {
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  animation: bell 1s 1s both infinite;
+}
+.head li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.head li img:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.sidebar.close + .head {
+  width: 94%;
+
+  right: -47%;
+}
+.sidebar.close + .head ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 5px 10px;
+}
+.sidebar.close + .head ul li i {
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  animation: bell 1s 1s both infinite;
+}
+/* .sidebar.close + .main .head li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+} */
+.main-cards {
+  position: fixed;
+}
+.main-cards .container {
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.main-cards .container .box {
+  padding: 10px 20px;
+}
+.main-cards .container .box .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white-color);
+  padding: 10px 20px;
+}
+/* end section main  */
+
+@media (max-width: 767px) {
+  .main .head li img {
+    width: 50px;
+    height: 50px;
+  }
+  .sidebar header .image-text {
+    gap: 5px;
+  }
+  .sidebar ul li:nth-child(12) a {
+    transform: translateY(20px);
+  }
+  .sidebar li a {
+    height: 45px;
+  }
+}
+
+@keyframes bell {
+  0% {
+    transform: rotate(0);
+  }
+
+  10% {
+    transform: rotate(30deg);
+  }
+  20% {
+    transform: rotate(0);
+  }
+  80% {
+    transform: rotate(0);
+  }
+  90% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
