@@ -161,13 +161,14 @@
         <div class="container">
           <h3>add park</h3>
           <a href="#" class="btn" onclick="addPark()">add park</a>
+          <!-- <a href="#" class="btn" onclick="findNearestParking()">n park</a> -->
         </div>
       </section>
       <section class="deletall">
         <div class="container">
           <h3>delete all parks</h3>
 
-        <a href="#" class="btn" onclick="deleteAllParks()">delet parks</a>
+        <a href="#" class="btn" onclick="deleteAllParks()">delet all parks</a>
         </div>
       </section>
 
@@ -576,6 +577,36 @@ element.classList.add('show');
     } else {
       swal("تم إلغاء الحذف");
     }
+  });
+}
+
+
+
+
+
+function findNearestParking(longitude, latitude) {
+  fetch('https://gara4ko-p8wm.onrender.com/api/v1/parking/location', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "locationMap": {
+        "type": "Point",
+        "coordinates": [longitude, latitude]
+      }
+    }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success && data.data.length > 0) {
+      console.log("أقرب جراج هو: ", data.data[0]);
+    } else {
+      console.log("لم يتم العثور على جراجات قريبة");
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
   });
 }
 
